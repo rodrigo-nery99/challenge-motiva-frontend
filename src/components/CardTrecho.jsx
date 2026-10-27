@@ -1,4 +1,4 @@
-function CardTecho({ rodovia, kmInicial, kmFinal, nome, status, observacao }) {
+function CardTrecho({ rodovia, kmInicial, kmFinal, nome, status, observacao }) {
   return (
     <article className="card">
       <h3>{nome}</h3>
@@ -8,4 +8,4 @@ function CardTecho({ rodovia, kmInicial, kmFinal, nome, status, observacao }) {
     </article> 
   );  
 }
-export default CardTecho;
+export default CardTrecho;
