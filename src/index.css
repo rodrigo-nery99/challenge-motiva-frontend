@@ -1,0 +1,140 @@
+
+/* ===== Cores e base ===== */
+:root {
+  --cor-primaria: #0b3d6b;
+  --cor-secundaria: #1f6fb2;
+  --cor-fundo: #f4f6f9;
+  --cor-card: #ffffff;
+  --cor-texto: #1e1e1e;
+  --cor-texto-suave: #5f6b7a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.5;
+}
+
+/* ===== Header ===== */
+.header {
+  background: var(--cor-primaria);
+  color: #fff;
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+.header p {
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* ===== Nav ===== */
+.nav {
+  display: flex;
+  background: var(--cor-secundaria);
+}
+
+.nav button {
+  flex: 1;
+  padding: 0.9rem;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.nav button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav button.ativo {
+  background: var(--cor-primaria);
+  font-weight: bold;
+}
+
+/* ===== Conteúdo ===== */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+main h2 {
+  margin-bottom: 1rem;
+  color: var(--cor-primaria);
+}
+
+main section > p {
+  margin-bottom: 0.75rem;
+}
+
+/* ===== Lista e cards ===== */
+.lista {
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: var(--cor-card);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.card small {
+  color: var(--cor-texto-suave);
+}
+
+/* ===== Status dos trechos ===== */
+.status {
+  align-self: flex-start;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.status-normal {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-atencao {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-critico {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* ===== Interações ===== */
+.comando {
+  font-weight: bold;
+}
+
+.resposta {
+  background: var(--cor-fundo);
+  border-left: 4px solid var(--cor-secundaria);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+}
+
+/* ===== Telas maiores: cards em 2 colunas ===== */
+@media (min-width: 700px) {
+  .lista {
+    grid-template-columns: 1fr 1fr;
+  }
+}
