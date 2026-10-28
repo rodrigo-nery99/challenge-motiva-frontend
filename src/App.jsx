@@ -1,4 +1,25 @@
+
+import { useState } from "react";
+import Header from "./components/Header";
+import Nav from "./components/Nav";
+import Inicio from "./pages/Inicio";
+import Consultas from "./pages/Consultas";
+import Interacoes from "./pages/Interacoes";
+
 function App() {
-  return <h1>Motiva Campo</h1>
+  const [telaAtual, setTelaAtual] = useState("inicio");
+
+  return (
+    <>
+      <Header titulo="Motiva Campo" subtitulo="Apoio ao profissional de campo" />
+      <Nav telaAtual={telaAtual} onTrocarTela={setTelaAtual} />
+      <main>
+        {telaAtual === "inicio" && <Inicio />}
+        {telaAtual === "consultas" && <Consultas />}
+        {telaAtual === "interacoes" && <Interacoes />}
+      </main>
+    </>
+  );
 }
-export default App
+
+export default App;
