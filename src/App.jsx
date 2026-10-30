@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
@@ -14,7 +13,7 @@ function App() {
       <Header titulo="Motiva Campo" subtitulo="Apoio ao profissional de campo" />
       <Nav telaAtual={telaAtual} onTrocarTela={setTelaAtual} />
       <main>
-        {telaAtual === "inicio" && <Inicio />}
+        {telaAtual === "inicio" && <Inicio onTrocarTela={setTelaAtual} />}
         {telaAtual === "consultas" && <Consultas />}
         {telaAtual === "interacoes" && <Interacoes />}
       </main>

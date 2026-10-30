@@ -1,12 +1,14 @@
-
 /* ===== Cores e base ===== */
+
 :root {
-  --cor-primaria: #0b3d6b;
-  --cor-secundaria: #1f6fb2;
-  --cor-fundo: #f4f6f9;
+  --cor-primaria: #5f21f3;     /* roxo da Motiva (mesmo tom do fundo do logo) */
+  --cor-secundaria: #4515c2;   /* roxo mais escuro */
+  --cor-roxo-claro: #f0eafe;   /* fundos de destaque */
+  --cor-fundo: #f6f5fa;
   --cor-card: #ffffff;
-  --cor-texto: #1e1e1e;
-  --cor-texto-suave: #5f6b7a;
+  --cor-borda: #e6e3f0;
+  --cor-texto: #1e1a33;
+  --cor-texto-suave: #6b6680;
 }
 
 * {
@@ -23,44 +25,78 @@ body {
 }
 
 /* ===== Header ===== */
+
 .header {
   background: var(--cor-primaria);
   color: #fff;
   padding: 1.25rem 1rem;
-  text-align: center;
+}
+
+.header-conteudo {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header-logo {
+  height: 48px;
+  width: auto;
+}
+
+.header-textos {
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+  padding-left: 1.25rem;
+}
+
+.header h1 {
+  font-size: 1.4rem;
+  line-height: 1.2;
 }
 
 .header p {
   opacity: 0.85;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 /* ===== Nav ===== */
+
 .nav {
   display: flex;
-  background: var(--cor-secundaria);
+  justify-content: center;
+  background: var(--cor-card);
+  border-bottom: 1px solid var(--cor-borda);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .nav button {
   flex: 1;
+  max-width: 300px;
   padding: 0.9rem;
   border: none;
+  border-bottom: 3px solid transparent;
   background: transparent;
-  color: #fff;
+  color: var(--cor-texto-suave);
   font-size: 1rem;
   cursor: pointer;
 }
 
 .nav button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--cor-primaria);
+  background: var(--cor-roxo-claro);
 }
 
 .nav button.ativo {
-  background: var(--cor-primaria);
+  color: var(--cor-primaria);
+  border-bottom-color: var(--cor-primaria);
   font-weight: bold;
 }
 
 /* ===== Conteúdo ===== */
+
 main {
   max-width: 900px;
   margin: 0 auto;
@@ -76,7 +112,47 @@ main section > p {
   margin-bottom: 0.75rem;
 }
 
+.destaque p {
+  margin-bottom: 0.75rem;
+}
+
+.titulo-secao {
+  margin: 1.75rem 0 0.75rem;
+  color: var(--cor-texto-suave);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.atalho {
+  font: inherit;
+  text-align: left;
+  color: var(--cor-texto);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+
+.atalho:hover {
+  transform: translateY(-2px);
+  border-color: var(--cor-primaria);
+  box-shadow: 0 6px 16px rgba(95, 33, 243, 0.15);
+}
+
+.atalho strong {
+  color: var(--cor-primaria);
+  font-size: 1.1rem;
+}
+
+.atalho span {
+  color: var(--cor-texto-suave);
+}
+
+.atalho .atalho-icone {
+  font-size: 1.6rem;
+}
+
 /* ===== Lista e cards ===== */
+
 .lista {
   display: grid;
   gap: 1rem;
@@ -84,9 +160,10 @@ main section > p {
 
 .card {
   background: var(--cor-card);
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(30, 26, 51, 0.05);
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -96,12 +173,38 @@ main section > p {
   color: var(--cor-texto-suave);
 }
 
+.card-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.card-local {
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}
+
+/* Precisa vir DEPOIS do .card, senão o "border" do .card apaga a faixa roxa */
+.destaque {
+  border-left: 5px solid var(--cor-primaria);
+}
+
 /* ===== Status dos trechos ===== */
+
+.card-trecho {
+  border-left-width: 5px;
+}
+
+.borda-status-normal  { border-left-color: #1e8e4e; }
+.borda-status-atencao { border-left-color: #c98a00; }
+.borda-status-critico { border-left-color: #d63a3a; }
+
 .status {
-  align-self: flex-start;
-  padding: 2px 10px;
-  border-radius: 4px;
-  font-size: 0.85rem;
+  flex-shrink: 0;
+  padding: 2px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
   font-weight: bold;
 }
 
@@ -121,18 +224,36 @@ main section > p {
 }
 
 /* ===== Interações ===== */
+
 .comando {
   font-weight: bold;
 }
 
 .resposta {
-  background: var(--cor-fundo);
-  border-left: 4px solid var(--cor-secundaria);
+  background: var(--cor-roxo-claro);
+  border-left: 4px solid var(--cor-primaria);
   padding: 0.5rem 0.75rem;
-  border-radius: 4px;
+  border-radius: 6px;
+}
+
+/* ===== Celular: header mais compacto ===== */
+
+@media (max-width: 480px) {
+  .header-logo {
+    height: 36px;
+  }
+
+  .header-textos {
+    padding-left: 0.9rem;
+  }
+
+  .header h1 {
+    font-size: 1.15rem;
+  }
 }
 
 /* ===== Telas maiores: cards em 2 colunas ===== */
+
 @media (min-width: 700px) {
   .lista {
     grid-template-columns: 1fr 1fr;
