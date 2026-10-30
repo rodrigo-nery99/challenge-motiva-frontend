@@ -1,4 +1,4 @@
-import { formatarData } from "../util/formatarData";
+import { formatarData } from "../utils/formatarData";
 
 function CardInteracao({ comando, data, resposta }) {
   return (
